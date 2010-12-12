@@ -263,7 +263,19 @@ namespace ORTS.Core.Primitives
 
             return 0;
         }
+        public override bool Equals(object other)
+        {
 
+            if (other is Vect3)
+            {
+                Vect3 otherVector = (Vect3)other;
+                return otherVector == this;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool Equals(Vect3 other)
         {
             return this == other;
