@@ -164,20 +164,6 @@ namespace ORTS.Core.Primitives
             return((v1.X == v2.X) && (v1.Y == v2.Y) && (v1.Z == v2.Z));
         }
 
-        public override bool Equals(System.Object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-            Vect3 v = obj as Vect3;
-            if ((System.Object)v == null)
-            {
-                return false;
-            }
-            return this == v;
-        }
-
         public static bool operator !=(Vect3 v1, Vect3 v2)
         {
             return !(v1 == v2);
@@ -244,9 +230,43 @@ namespace ORTS.Core.Primitives
             return this.X.GetHashCode() ^ this.Y.GetHashCode() ^ this.Z.GetHashCode();
         }
 
-        public override string ToString()
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             return (System.String.Format("Vector3({0},{1},{2})",X,Y,Z));
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Vect3)
+            {
+                Vect3 otherVector = (Vect3)obj;
+                if (this < otherVector) { return -1; }
+                else if (this > otherVector) { return 1; }
+                return 0;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        public int CompareTo(Vect3 other)
+        {
+            if (this < other)
+            {
+                return -1;
+            }
+            else if (this > other)
+            {
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public bool Equals(Vect3 other)
+        {
+            return this == other;
         }
     }
 }
