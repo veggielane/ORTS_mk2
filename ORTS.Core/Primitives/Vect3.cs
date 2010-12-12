@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ORTS.Core.Primitives
 {
-    public class Vect3
+    public class Vect3 : IFormattable, IComparable, IComparable<Vect3>, IEquatable<Vect3>
     {
         public double X { get; private set; }
         public double Y { get; private set; }
@@ -102,6 +102,11 @@ namespace ORTS.Core.Primitives
         public Vect3 Min(Vect3 v)
         {
             return Min(this, v);
+        }
+
+        public Vect3 Interpolate(Vect3 other, double control)
+        {
+            return Interpolate(this, other, control);
         }
 
         public static Vect3 operator +(Vect3 v1, Vect3 v2)
@@ -220,6 +225,18 @@ namespace ORTS.Core.Primitives
         {
             if (v1 <= v2) { return v1; }
             return v2;
+        }
+
+        public static Vect3 Interpolate(Vect3 v1, Vect3 v2, double control)
+        {
+            if (control > 1 || control < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                return new Vect3 (v1.X * (1 - control) + v2.X * control, v1.Y * (1 - control) + v2.Y * control, v1.Z * (1 - control) + v2.Z * control);
+            }
         }
 
         public override int GetHashCode()
