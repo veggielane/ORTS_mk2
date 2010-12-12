@@ -7,9 +7,9 @@ namespace ORTS.Core.Primitives
 {
     public class Vect3
     {
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Z { get; set; }
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Z { get; private set; }
 
         public Vect3()
         {
