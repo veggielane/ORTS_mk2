@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.CoreEx, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Reactive, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,17 +43,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\BasicBuffer.cs" />
+    <Compile Include="Collections\IBuffer.cs" />
+    <Compile Include="Collections\SafeCollection.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\ObservableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="GameEngine.cs" />
+    <Compile Include="GameObjectFactory.cs" />
     <Compile Include="GameObjects\IGameObject.cs" />
     <Compile Include="GameObjects\IHasGeometry.cs" />
+    <Compile Include="GameObjects\IHasPosition.cs" />
+    <Compile Include="GameObjects\IHasSelect.cs" />
+    <Compile Include="GameObjects\IHasVelocity.cs" />
+    <Compile Include="GameObjects\IMapGO.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Interfaces\IPhysics.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="Messages\BaseMessage.cs" />
+    <Compile Include="Messages\BusFilters.cs" />
+    <Compile Include="Messages\IHasMessageBus.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Messages\IObjectLifetimeNotification.cs" />
+    <Compile Include="Messages\IObjectLifetimeRequest.cs" />
+    <Compile Include="Messages\MessageBus.cs" />
+    <Compile Include="Messages\ObjectCreated.cs" />
+    <Compile Include="Messages\ObjectCreationRequest.cs" />
+    <Compile Include="Messages\ObjectDestroyed.cs" />
+    <Compile Include="Messages\ObjectDestructionRequest.cs" />
+    <Compile Include="Messages\SystemMessage.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Primitives\Vect3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reactive\AnonymousDisposable.cs" />
+    <Compile Include="Reactive\Observable.cs" />
+    <Compile Include="Timing\AsyncObservableTimer.cs" />
+    <Compile Include="Timing\IGameTime.cs" />
+    <Compile Include="Timing\ObservableTimer.cs" />
+    <Compile Include="Timing\TickTime.cs" />
+    <Compile Include="Timing\TimerMessage.cs" />
+    <Compile Include="ViewObjects\IViewObject.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

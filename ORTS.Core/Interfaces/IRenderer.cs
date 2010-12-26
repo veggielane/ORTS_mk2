@@ -9,7 +9,7 @@ namespace ORTS.Core.Interfaces
     public interface IRenderer
     {
         void Setup();
-        void Start(Object threadContext);
+        void Start(GameEngine Engine);
         void Stop();
     }
 }

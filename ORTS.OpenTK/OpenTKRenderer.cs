@@ -8,6 +8,7 @@ using OpenTK.Input;
 using ORTS.Core;
 using ORTS.Core.Interfaces;
 using ORTS.Core.GameObjects;
+using ORTS.Core.Messages;
 namespace ORTS.OpenTK
 {
     public class OpenTKRenderer: IRenderer
@@ -16,47 +17,14 @@ namespace ORTS.OpenTK
         {
 
         }
-        public void Start(Object threadContext)
+        public void Start(GameEngine Engine)
         {
-            using (OpenTKWindow p = new OpenTKWindow())
-            {
-                p.Run();
-            }
+
         }
 
         public void Stop()
         {
             
         }
-    }
-    public class OpenTKWindow : GameWindow
-    {
-        public OpenTKWindow() : base(1024, 768)
-        {
-            GL.Enable(EnableCap.DepthTest|EnableCap.PolygonSmooth);
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-        }
-        protected override void OnRenderFrame(FrameEventArgs e)
-        {
-            base.OnRenderFrame(e);
-            foreach (IHasGeometry GameObject in GameEngine.State.GameObjects.OfType<IHasGeometry>())
-            {
-              // Render(GameObject);
-            }
-            SwapBuffers();
-        }
-        protected override void OnUpdateFrame(FrameEventArgs e)
-        {
-            if (Keyboard[Key.Escape])
-                Exit();
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-        }
-
     }
 }
